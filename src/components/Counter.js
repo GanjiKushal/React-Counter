@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './Counter.css'
 
 function Counter() {
   const [count, setCount] = useState(0);
@@ -18,14 +19,19 @@ function Counter() {
 
   const { isZero, isNegative, isEven } = getCountProperties(count);
   return (
-    <div>
-      <h1>Counter: {count}</h1>
-      <button onClick={Increment}>+</button>
-      <button onClick={Decrement}>-</button>
+    <div className="counter">
+      <h2>Counter</h2>
+      <div className="counter-display">{count}</div>
+      <div className="counter-buttons">
+        <button className="counter-button" onClick={Increment}>Increase</button>
+        <button className="counter-button" onClick={Decrement}>Decrease</button>
+      </div>
       <h2>
-        Count is {isZero && <h3 style={{ color: 'red' }}> zero</h3>}
-        {isNegative && <h3 style={{ color: 'blue' }}> negative</h3>}
-        {!isZero && !isNegative && <h3 style={{ color: 'green' }}> {isEven ? "even" : "odd"}.</h3>}
+        Count is: {isZero && <h3 style={{ color: "red" }}> zero</h3>}
+        {isNegative && <h3 style={{ color: "blue" }}> negative</h3>}
+        {!isZero && !isNegative && (
+          <h3 style={{ color: "green" }}> {isEven ? "even" : "odd"}</h3>
+        )}
       </h2>
     </div>
   );
